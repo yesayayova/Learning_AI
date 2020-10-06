@@ -3,9 +3,10 @@
 #with Python3
 
 """
-BREADTH FIRST SEARCH ALGORITHM
-with input is a graph
+    BREADTH FIRST SEARCH ALGORITHM
+    with input is a graph
 """
+
 def BFS(graph, goal, first):
     explored = [first]
     queue    = []
@@ -14,7 +15,7 @@ def BFS(graph, goal, first):
     while True:        
         #if goal was found
         if current == goal:
-            print ("Found!")
+            print ("\nFound!")
             break
         
         #check on each current's neighbour 
@@ -22,17 +23,19 @@ def BFS(graph, goal, first):
             if neighbour not in explored: 
                 queue.append(neighbour)
         
+        print(current, end=" ")
         explored.append(current)
         current = queue.pop(0)
         
         #if goal wasn't found
         if len(queue) == 0:
-            print("Not Found!")
+            print(". . .\nNot Found!")
             break
         
 """
-A GRAPH TO TEST THE ALGORITHM
+    A GRAPH TO TEST THE ALGORITHM
 """
+
 graph = {
   'A' : ['B','C'],
   'B' : ['D', 'E'],
@@ -43,4 +46,3 @@ graph = {
 }
 
 BFS(graph, "Z", "A")
-    
