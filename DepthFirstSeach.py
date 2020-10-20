@@ -1,10 +1,10 @@
 #DepthFirstSearch.py
-#by YesayaYova
-#with Python3
+#oleh YesayaYova
+#dengan Python3
 
 """
     DEPTH FIRST SEARCH ALGORITHM
-    with input is a graph
+    dengan inputan berupa sebuah graph
 """
 
 def DFS(graph, goal, first):
@@ -13,39 +13,29 @@ def DFS(graph, goal, first):
     current  = first
     
     while True:        
-        #if goal was found
+        #jika goal state ditemukan
         if current == goal:
-            print ("\nFound!")
-            backtrack = True
             break
         
-        #check on each current's neighbour 
+        #mengecek setiap neighbour pada current state
         for neighbour in graph[current]:
-            if neighbour not in explored: 
-                queue.append(neighbour)
+            if (neighbour[0] not in explored)and (neighbour[0] not in queue): 
+                queue.append(neighbour[0])
         
-        print(current, end=" ")
-        explored.append(current)
+        
+        print(current)
+        #mengecek pada explored
+        if current not in explored:
+            explored.append(current)
+        
+        #mengambil suksesor dengan prinsip LIFO
         current = queue.pop()
         
-        #if goal wasn't found
+        #jika goal state tidak ditemukan
         if len(queue) == 0:
-            print(". . .\nNot Found!")
-            backtrack = False
             break
-            
-
-"""
-    A GRAPH TO TEST THE ALGORITHM
-"""
-
-graph = {
-  'A' : ['B','C'],
-  'B' : ['D', 'E'],
-  'C' : ['F'],
-  'D' : [],
-  'E' : ['F'],
-  'F' : []
-}
-
-DFS(graph, "Z", "A")
+        
+    if current == goal:
+        print(goal, "Found!")
+    else:
+        print("Not Found!")
